@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.41em;
+}
+
+body {
+  height: calc(100% - 5em);
+  color: var(--links-text-color);
+  background-color: var(--background-color);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  font-style: italic;
+  outline: none;
+}
+a:hover::before,
+a:active::before,
+a:focus::before {
+  content: "* ";
+}
+
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  cursor: auto;
+}
+
+#root {
+  padding: 5em 0;
+}
+
+#app {
+  width: 1050px;
+  margin: 0 auto;
+}
+
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+#grid #links {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 50px;
+}
+#grid #links .section {
+  min-width: 220px;
+}
+#grid #links #s01,
+#grid #links #s02 {
+  margin-right: 50px;
+  max-height: 700px;
+  overflow-y: scroll;
+}
+
+.group .item {
+  margin-bottom: 6px;
+}
+.group {
+  margin-bottom: 90px;
+  margin-top: 30px;
+}
+.group:last-child {
+  margin-bottom: 0;
+}
+
+a.flow {
+  cursor: pointer;
+  display: block;
+}
+a.flow::after {
+  content: " ~";
+}
+
+#notes {
+  width: 400px;
+  padding: 25px 30px;
+  border-radius: 5px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: var(--notes-background);
+}
+#notes .title {
+  margin-bottom: 60px;
+  color: var(--notes-title-color);
+}
+#notes textarea {
+  width: 100%;
+  margin: -0.7em;
+  padding: 0.7em;
+  max-height: 600px;
+  border-radius: 5px;
+  color: var(--notes-text-color);
+  border: var(--notes-border);
+  background: var(--notes-background);
+}
+#notes textarea:hover,
+#notes textarea:focus {
+  border: var(--notes-border-hover);
+  background: var(--notes-background-hover);
+}
+#notes textarea::-moz-selection {
+  color: var(--notes-background);
+  background-color: var(--notes-text-color);
+}
+#notes textarea::selection {
+  color: var(--notes-background);
+  background-color: var(--notes-text-color);
+}
+
+.title {
+  margin-bottom: 60px;
+  color: var(--group-title-color);
+}
+
+.line {
+  margin-bottom: 1.2em;
+}
+.line:last-of-type {
+  margin-bottom: 0;
+}
+
+#interface {
+  position: absolute;
+  bottom: 3em;
+  z-index: 10;
+}
+#interface #msg-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  display: none;
+}
+#interface #msg-board.board-active {
+  display: block;
+}
+#interface .msg {
+  color: #181818;
+  margin-left: -1em;
+  background-color: #ffffff;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+#interface #message::-moz-selection {
+  color: var(--editor-background);
+  background-color: var(--editor-text-color);
+}
+#interface #message::selection {
+  color: var(--editor-background);
+  background-color: var(--editor-text-color);
+}
+#interface #editor {
+  position: relative;
+  margin-left: -1em;
+  margin-bottom: 1em;
+}
+#interface #editor textarea {
+  font-family: monospace;
+  width: 470px;
+  height: 300px;
+  padding: 1em;
+  border-radius: 5px;
+  color: var(--editor-text-color);
+  background: var(--editor-background);
+}
+#interface #editor textarea::-moz-selection {
+  color: var(--editor-background);
+  background-color: var(--editor-text-color);
+}
+#interface #editor textarea::selection {
+  color: var(--editor-background);
+  background-color: var(--editor-text-color);
+}
+#interface #menu {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.3em 2em;
+  margin-left: -2em;
+  margin-right: -1em;
+  background-color: var(--background-color);
+  border: 1px solid var(--background-color);
+}
+#interface #menu.active {
+  box-sizing: border-box;
+  border: 1px dashed #2e2e2e;
+}
+#interface #menu .item {
+  cursor: pointer;
+  margin-right: 1.5em;
+  color: var(--menu-text-color);
+}
+#interface #menu .item:last-of-type {
+  margin-right: 0;
+}
+#interface #menu .active,
+#interface #menu .item:hover {
+  color: var(--menu-text-hover-color);
+}
+
+:root {
+  --font-family: monospace;
+  --links-text-color: #ffffff;
+  --group-title-color: #a3a3a3;
+  --background-color: #181818;
+  --notes-title-color: #a3a3a3;
+  --notes-text-color: #ffffff;
+  --notes-background: #1c1c1c;
+  --notes-border: 2px solid #1c1c1c;
+  --notes-background-hover: #1c1c1c;
+  --notes-border-hover: 2px solid #1c1c1c;
+  --editor-text-color: #1c1c1c;
+  --editor-background: #ffffff;
+  --menu-text-color: #a3a3a3;
+  --menu-text-hover-color: #ffffff;
+  --scrollbar-color: #333333;
+  --scrollbar-hover-color: #444444;
+  --menu-saved-color: #4caf50;
+}
+
+::-moz-selection {
+  color: var(--background-color);
+  background-color: var(--links-text-color);
+}
+
+::selection {
+  color: var(--background-color);
+  background-color: var(--links-text-color);
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: var(--scrollbar-color);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover-color);
+}/*# sourceMappingURL=style.css.map */

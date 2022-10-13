@@ -195,7 +195,7 @@ a.flow::after {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
-  border-radius: 5px;
+  border-radius: 30px;
   padding: 1em 2em;
   margin-left: -2em;
   margin-right: -1em;

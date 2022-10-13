@@ -18,7 +18,7 @@ const Menu = ({
         id="menu"
         onMouseEnter={() => setMenuActive(true)}
         onMouseLeave={() => setMenuActive(false)}
-        className={`${menuActive && "active"}`}
+        className={`${(menuActive || editorMode !== "unset") && "active"}`}
       >
         <span id="left">
           <span

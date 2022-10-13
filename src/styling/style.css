@@ -11,6 +11,7 @@ body {
   height: calc(100% - 5em);
   color: var(--links-text-color);
   background-color: var(--background-color);
+  padding: 0 2em 4em 2em;
 }
 
 a {
@@ -38,21 +39,19 @@ textarea {
 }
 
 #root {
-  padding: 5em 0;
+  padding: 5em 0 0 0;
 }
 
 #app {
-  width: 1050px;
+  max-width: 1050px;
   margin: 0 auto;
 }
 
 #grid {
   display: flex;
-  flex-wrap: wrap;
 }
 #grid #links {
   display: flex;
-  flex-wrap: wrap;
   margin-right: 50px;
 }
 #grid #links .section {
@@ -134,9 +133,10 @@ a.flow::after {
 }
 
 #interface {
-  position: absolute;
+  position: fixed;
   bottom: 3em;
   z-index: 10;
+  display: inline-block;
 }
 #interface #msg-board {
   display: flex;
@@ -192,6 +192,10 @@ a.flow::after {
   position: relative;
   display: flex;
   justify-content: space-between;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  border-radius: 5px;
   padding: 1em 2em;
   margin-left: -2em;
   margin-right: -1em;
@@ -200,8 +204,9 @@ a.flow::after {
 }
 #interface #menu.active {
   box-sizing: border-box;
-  border: 1px dashed #2e2e2e;
-  background-color: var(--notes-background);
+  border: 1px dashed #444;
+  background-color: var(--menu-background-color);
+  max-width: 534px;
 }
 #interface #menu .item {
   cursor: pointer;
@@ -234,9 +239,9 @@ a.flow::after {
   --editor-background: #ffffff;
   --menu-text-color: #a3a3a3;
   --menu-text-hover-color: #ffffff;
+  --menu-background-color: #1e1e1e;
   --scrollbar-color: #333333;
   --scrollbar-hover-color: #444444;
-  --menu-saved-color: #4caf50;
 }
 
 ::-moz-selection {
@@ -267,4 +272,35 @@ a.flow::after {
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: var(--scrollbar-hover-color);
+}
+
+@media (max-width: 1150px) {
+  body {
+    padding: 0 2em 8em 2em;
+  }
+  #grid {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  #grid #links {
+    margin-right: 0px;
+    margin-bottom: 5em;
+  }
+  #grid #links #s02 {
+    margin-right: 0px;
+  }
+  #grid #notes {
+    width: 490px;
+    box-sizing: border-box;
+  }
+  #interface {
+    left: 3em;
+    bottom: 1em;
+  }
+  #interface #menu {
+    background-color: var(--menu-background-color);
+    border: 1px dashed #444;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
 }/*# sourceMappingURL=style.css.map */

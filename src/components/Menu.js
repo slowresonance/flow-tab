@@ -6,6 +6,7 @@ const Menu = ({
   setEditorMode,
   createDownload,
   handleClick,
+  importData,
   setMsgs,
 }) => {
   const [menuActive, setMenuActive] = useState(false);
@@ -49,11 +50,29 @@ const Menu = ({
               >
                 Edit Styling
               </span>
+              <span className="item">
+                <label
+                  onClick={() => {
+                    setMsgs([
+                      "Select a file to import data",
+                      "Note: this resets your current data",
+                    ]);
+                  }}
+                >
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    id="file-input"
+                    onChange={importData}
+                  />
+                  Import
+                </label>
+              </span>
               <span
                 className="item"
                 onClick={() => {
                   createDownload();
-                  setMsgs(["ALl your links, notes and styling are exported!"]);
+                  setMsgs(["All your links, notes and styling are exported!"]);
                 }}
               >
                 Export

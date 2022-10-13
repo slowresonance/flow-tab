@@ -64,11 +64,21 @@ const _commit = (name, content) => {
   localStorage.setItem(name, JSON.stringify(content));
 };
 
+function readFileContent(file) {
+  const reader = new FileReader();
+  return new Promise((resolve, reject) => {
+    reader.onload = (event) => resolve(event.target.result);
+    reader.onerror = (error) => reject(error);
+    reader.readAsText(file);
+  });
+}
+
 function App() {
   const [rawLinks, setRawLinks] = useState(_retrive("links") || defaultLinks);
   const [notes, setNotes] = useState(_retrive("notes") || "");
   const [style, setStyle] = useState(_retrive("style") || defaultStyling);
   const [editorMode, setEditorMode] = useState("unset");
+  const [msgs, setMsgs] = useState([]);
   const editorRef = useRef(null);
 
   const _parseGroup = (str) => {
@@ -106,6 +116,25 @@ function App() {
       name: name,
       contents: items,
     };
+  };
+
+  const importData = (event) => {
+    setMsgs(["Data has been imported!"]);
+    const input = event.target;
+    if ("files" in input && input.files.length > 0) {
+      placeFileContent(input.files[0]);
+    }
+  };
+
+  const placeFileContent = (file) => {
+    console.log(file);
+    readFileContent(file).then((content) => {
+      content = JSON.parse(content);
+      console.log(content);
+      setNotes(content.notes);
+      setRawLinks(content.rawLinks);
+      setStyle(content.style);
+    });
   };
 
   const _parseGroups = (str) => {
@@ -187,7 +216,6 @@ function App() {
 
   useEffect(() => {
     _commit("style", style);
-    console.log("updated styles");
   }, [style]);
 
   useEffect(() => {
@@ -266,10 +294,13 @@ function App() {
         rawLinks={rawLinks}
         style={style}
         editorMode={editorMode}
+        importData={importData}
         setEditorMode={setEditorMode}
         handleAction={handleAction}
         createDownload={createDownload}
         editorRef={editorRef}
+        msgs={msgs}
+        setMsgs={setMsgs}
       ></Interface>
     </div>
   );

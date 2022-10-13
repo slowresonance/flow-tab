@@ -11,8 +11,10 @@ const Interface = ({
   handleAction,
   setEditorMode,
   createDownload,
+  importData,
+  msgs,
+  setMsgs,
 }) => {
-  const [msgs, setMsgs] = useState([]);
   const handleClick = (mode, action) => {
     handleAction(mode, action);
   };
@@ -40,6 +42,7 @@ const Interface = ({
         editorMode={editorMode}
         setEditorMode={setEditorMode}
         createDownload={createDownload}
+        importData={importData}
         handleClick={handleClick}
         setMsgs={setMsgs}
       ></Menu>

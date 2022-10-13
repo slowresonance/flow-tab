@@ -216,7 +216,7 @@ a.flow {
     display: flex;
     justify-content: space-between;
 
-    padding: 1.3em 2em;
+    padding: 1em 2em;
     margin-left: -2em;
     margin-right: -1em;
 
@@ -226,12 +226,17 @@ a.flow {
     &.active {
       box-sizing: border-box;
       border: 1px dashed #2e2e2e;
+      background-color: var(--notes-background);
     }
 
     .item {
       cursor: pointer;
       margin-right: 1.5em;
       color: var(--menu-text-color);
+
+      & label {
+        cursor: pointer;
+      }
 
       &:last-of-type {
         margin-right: 0;

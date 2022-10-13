@@ -10,8 +10,6 @@ const Notes = ({ notes, setNotes }) => {
     textareaRef.current.style.height = scrollHeight + "px";
   }, [currentValue]);
 
-  // + 23
-
   const handleBlur = () => {
     setNotes(currentValue);
   };

@@ -192,7 +192,7 @@ a.flow::after {
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 1.3em 2em;
+  padding: 1em 2em;
   margin-left: -2em;
   margin-right: -1em;
   background-color: var(--background-color);
@@ -201,11 +201,15 @@ a.flow::after {
 #interface #menu.active {
   box-sizing: border-box;
   border: 1px dashed #2e2e2e;
+  background-color: var(--notes-background);
 }
 #interface #menu .item {
   cursor: pointer;
   margin-right: 1.5em;
   color: var(--menu-text-color);
+}
+#interface #menu .item label {
+  cursor: pointer;
 }
 #interface #menu .item:last-of-type {
   margin-right: 0;
